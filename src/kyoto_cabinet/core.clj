@@ -65,3 +65,11 @@
 (defn get-value "Gets a value from the cabinet."
   [key]
   (.get (*kyoto* :connection) (str key)))
+
+(defn increment
+  "Add a number to the numeric integer value of a record.
+   If the key does not exist, then it is added with the initial value of num.
+   TODO: make a double version"
+  ([key] (increment key 1))
+  ([key num] (.increment (*kyoto* :connection) key (long num))))
+
